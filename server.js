@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 const { port } = require('./config');
 const { apiKey } = require('./config');
+const { proxyAddr } = require('./config');
 const cors = require("cors");
 
 app.use(cors());
@@ -17,7 +18,7 @@ async function getBlockForTime(timestamp){
 
 
 async function getTransactions(startBlock, endBlock) {
-	const proxyAddr = `0x6317C5e82A06E1d8bf200d21F4510Ac2c038AC81`;
+	  //const proxyAddr = `0x6317C5e82A06E1d8bf200d21F4510Ac2c038AC81`;
     console.log(`Fetching Txs For ${proxyAddr} for blocks: ${startBlock}-${endBlock}`);
 
     const URL = `https://api.etherscan.io/api?module=account&action=txlist&address=${proxyAddr}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${apiKey}`;
